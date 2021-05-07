@@ -1,0 +1,67 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    #J_3669986910 {
+        display: none !important;
+    }
+
+    #J_1259682940 {
+        display: none !important;
+    }
+
+    #J_6254634110 .lzd-act-richtext h5 {
+        margin: 0 !important;
+    }
+
+    .bg-daz {
+        background: #f57224;
+    }
+
+    .text-daz {
+        color: #f57224;
+        font-size: 13px;
+    }
+
+    .no-m {
+        margin-bottom: 0 !important;
+    }
+</style>
+<div class="container py-2">
+    <!-- timeline item 1 -->
+    <div id="myData">
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script type='text/javascript'>
+    var publicSpreadsheetUrl =
+        'https://docs.google.com/spreadsheets/d/1AlWQ8-TeckjR5uHZY140VkvY2nqs3OS8Fv-CScRQenI/edit?usp=sharing';
+
+    function init() {
+        Tabletop.init({
+            key: publicSpreadsheetUrl,
+            callback: showInfo,
+            simpleSheet: true
+        })
+    }
+
+    function showInfo(data, tabletop) {
+        var mainContainer = document.getElementById("myData");
+        for (var i = 0; i < data.length; i++) {
+            console.log(data.length)
+            var div = document.createElement("div");
+            div.classList.add("row");
+            div.innerHTML = (
+                '<div class="col py-2"><div class="card"><div class="card-body"><div class="float-right text-daz">' +
+                data[i].timestamp + '</div><h4 class="card-title text-muted">' + data[i].heading +
+                '</h4><p class="card-text">' + data[i].name + '</p></div></div></div>')
+            // tr.innerHTML = "<td>" + data[i].name + 
+            //                 "</td>";
+            mainContainer.appendChild(div);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', init)
+</script>
